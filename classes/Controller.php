@@ -8,11 +8,11 @@ class Controller
 
     public function processRequest(Request $httpRequest)
     {    
-        $vehicle_type = $httpRequest->getQuery('fuel');
+        $vehicleType = $httpRequest->getQuery('fuel');
         
-        $className = ucfirst($vehicle_type) . 'Vehicle';
+        $className = ucfirst($vehicleType) . 'Vehicle';
         if (file_exists('classes/' . $className . '.php')) {
-            $className = 'Vehicles\\' . ucfirst($vehicle_type). '\\' . $className;
+            $className = 'Vehicles\\' . ucfirst($vehicleType). '\\' . $className;
             $auto = new $className('Ford', 25, 50, 5, 1001);                
             $this->data = $auto->getInfo();    
         } else
